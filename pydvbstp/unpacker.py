@@ -1,3 +1,5 @@
+import struct
+
 from bitstring import ConstBitStream
 
 from .message import DVBSTP
@@ -30,7 +32,7 @@ def unpack(raw):
 
     if has_crc:
         payload = raw[packet.bytepos:-4]
-        crc = raw[-4:]
+        crc = struct.unpack('!I', raw[-4:])[0]
     else:
         crc = None
         payload = raw[packet.bytepos:]
