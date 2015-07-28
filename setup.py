@@ -23,7 +23,8 @@ setup(name='pydvbstp',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'attrs==15.0.0',
+          'bitstring==3.1.3',
+          'attrs==15.0.0'
       ],
       entry_points={
       })
