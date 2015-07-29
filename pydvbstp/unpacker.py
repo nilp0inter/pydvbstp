@@ -2,7 +2,7 @@ import struct
 
 from bitstring import ConstBitStream
 
-from .message import DVBSTP
+from .message import Section
 
 
 def unpack(raw):
@@ -40,4 +40,4 @@ def unpack(raw):
     del raw
     del packet
 
-    return DVBSTP(**locals())
+    return Section(**locals())

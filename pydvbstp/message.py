@@ -2,7 +2,15 @@ import attr
 
 
 @attr.s
-class DVBSTP:
+class Segment:
+    payload_id = attr.ib()
+    segment_id = attr.ib()
+    segment_version = attr.ib()
+    text = attr.ib(hash=False, cmp=False)
+
+
+@attr.s
+class Section:
     version = attr.ib()
     reserved = attr.ib()
     encryption = attr.ib()
@@ -20,3 +28,7 @@ class DVBSTP:
     private_header_data = attr.ib()
     payload = attr.ib()
     crc = attr.ib()
+
+    @property
+    def is_last(self):
+        return self.last_section_number == self.section_number
